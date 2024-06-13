@@ -1,5 +1,5 @@
 # DOCKER:
-# Download do crip de instalação do docker:
+# Download do script de instalação do docker:
 curl -fsSL https://get.docker.com -o get-docker.sh
 
 #Execução do script:
@@ -28,3 +28,9 @@ docker run \
    -e "MINIO_ROOT_USER=ROOTNAME" \
    -e "MINIO_ROOT_PASSWORD=CHANGEME123" \
    quay.io/minio/minio server /data --console-address ":9001"
+
+# Verificar o IP da máquina:
+ip a
+
+# Conectar via browser pelo IP da máquina e na porta 9001:
+xxx.xxx.x.xxx:9001
