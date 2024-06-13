@@ -1,0 +1,30 @@
+# DOCKER:
+# Download do crip de instalação do docker:
+curl -fsSL https://get.docker.com -o get-docker.sh
+
+#Execução do script:
+sh get-docker.sh
+
+# PODMAN:
+# Instalação do Podman:
+apt install podman -y
+
+# Abrindo as portas
+apt install firewalld -y
+firewall-cmd --permanent --zone=public --add-port=9000/tcp
+firewall-cmd --reload
+
+# INICIANDO O CONTAINER:
+# Docker:
+# Mudar ROOTNAME e CHANGEME123 para o nome de usuário e a senha que você quer usar respectivamente.
+
+mkdir -p ~/minio/data
+
+docker run \
+   -p 9000:9000 \
+   -p 9001:9001 \
+   --name minio \
+   -v ~/minio/data:/data \
+   -e "MINIO_ROOT_USER=ROOTNAME" \
+   -e "MINIO_ROOT_PASSWORD=CHANGEME123" \
+   quay.io/minio/minio server /data --console-address ":9001"
